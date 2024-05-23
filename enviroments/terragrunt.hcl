@@ -10,13 +10,3 @@ remote_state {
 }
 
 
-generate "provider" {
-  path = "provider.tf"
-  if_exists = "overwrite_terragrunt"
-  contents = <<EOF
-provider "aws" {
-  region = "ap-south-1"
-  profile = "satyam"
-}
-EOF
-}

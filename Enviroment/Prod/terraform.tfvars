@@ -1,2 +1,0 @@
-profile = "satyam"
-Env = "Prod"

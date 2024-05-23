@@ -1,9 +1,9 @@
 include {
-  path = find_in_parent_folders("comman.hcl")
+  path = find_in_parent_folders("terragrunt.hcl")
 }
 
 terraform{
-    source = "../../"
+    source = "../../stack"
 
 
 extra_arguments "custom_vars" {
