@@ -29,7 +29,7 @@ resource "aws_api_gateway_integration" "status_integration" {
 }
 
 # Lambda Permission Code
-resource "aws_lambda_permission" "apigw_lambda1" {
+resource "aws_lambda_permission" "apigw_lambda_status" {
   count = length(var.http_methods_status)
   statement_id  = "AllowExecutionFromAPIGateway_status_${count.index}"
   action        = "lambda:InvokeFunction"
@@ -101,7 +101,7 @@ resource "aws_api_gateway_integration" "employee_integration" {
 
 
 # Lambda Permission Code
-resource "aws_lambda_permission" "apigw_lambda2" {
+resource "aws_lambda_permission" "apigw_lambda_employee" {
   count = length(var.http_methods_employee)
   statement_id  = "AllowExecutionFromAPIGateway_employee_${count.index}" 
   action        = "lambda:InvokeFunction"
@@ -181,7 +181,7 @@ resource "aws_api_gateway_integration" "employees_integration" {
 
 
 # Lambda Permission Code
-resource "aws_lambda_permission" "apigw_lambda3" {
+resource "aws_lambda_permission" "apigw_lambda_employees" {
   count = length(var.http_methods_employees)
   statement_id  = "AllowExecutionFromAPIGateway_employees_${count.index}" 
   action        = "lambda:InvokeFunction"
