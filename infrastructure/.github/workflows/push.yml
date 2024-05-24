@@ -20,5 +20,5 @@ jobs:
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
             
             - name: "Terragrunt Init"
-              run: bash infrastructure/scripts/dev_terragrunt_init.sh
+              run: bash Terragrunt-Interhsip/infrastructure/scripts/dev_terragrunt_init.sh
         
