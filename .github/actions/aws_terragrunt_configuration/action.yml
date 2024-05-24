@@ -23,7 +23,7 @@ runs:
   using: 'composite'
   steps:
   - name: Configuration Aws
-    run: bash scripts/aws_configuration.sh
+    run: bash infrastructure/scripts/aws_configuration.sh
     env:
       AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
       AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
