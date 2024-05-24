@@ -32,8 +32,8 @@ runs:
       AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}
     shell: bash
 
-
-  - name: Install Terraform
-    uses: hashicorp/setup-terraform@v3
+  - name: Set up Terraform and Terragrunt
+    uses: aexvir/install-hashicorp-tools@v1
     with:
-      terraform_version: 1.7.0
+     terraform_version: 1.7.0
+     terragrunt_version: latest
