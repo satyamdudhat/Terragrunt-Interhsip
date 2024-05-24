@@ -6,8 +6,8 @@ provider "aws" {
 module "api_gateway" {
   source           = "../modules/Api_Gateway"
   api_name         = "${var.Project}-${var.Env}-api"
-  uri              = module.lambda_function.invoke_arn
-  function_name    = module.lambda_function.arn
+  lambda_function_uri = module.lambda_function.invoke_arn
+  lambda_function_name    = module.lambda_function.arn
   api_path_name    = [ "status", "employee", "employees" ]
 
   providers = {
@@ -40,9 +40,9 @@ module "ecr_repo" {
 
 # Lambda Code
 module "lambda_function" {
-  function_name = "${var.Project}-${var.Env}-lambdaproject"
+  lambda_function_name = "${var.Project}-${var.Env}-lambdaproject"
   source = "../modules/Lambda_Function"
-  image_uri = "${module.ecr_repo.repository_url}:latest"
+  lambda_image_uri = "${module.ecr_repo.repository_url}:latest"
   iam_role_name = "${var.Project}-${var.Env}-iamrole"
   ecr_access_policy = "${var.Project}-${var.Env}-ecraccess"
   dyanmodb_access_policy = "${var.Project}-${var.Env}-dyanmodbaccess"

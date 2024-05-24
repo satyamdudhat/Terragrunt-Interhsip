@@ -4,12 +4,12 @@ variable "api_name" {
 
 
 
-variable "uri" {
+variable "lambda_function_uri" {
   description = "Lambda function invoke_arn"
   type = string
 }
 
-variable "function_name" {
+variable "lambda_function_name" {
   description = "Lambda fucntion Name ARN"
   type = string
 }
@@ -25,7 +25,7 @@ variable "api_path_name" {
 
 
 #---------------------------------- Status Methods
-variable "http_methods_status" {
+variable "status_http_methods" {
   type    = list(string)
   default = ["GET"]
 }
@@ -42,7 +42,7 @@ variable "http_methods_status" {
 
 
 #------------------------------------ Employee Methods
-variable "http_methods_employee" {
+variable "employee_http_methods" {
   type    = list(string)
   default = ["GET","POST","DELETE","PATCH","PUT"]
 }
@@ -52,7 +52,7 @@ variable "http_methods_employee" {
 
 
 #------------------------------------ Employees Methods
-variable "http_methods_employees" {
+variable "employees_http_methods" {
   type    = list(string)
   default = ["GET"]
 }

@@ -1,8 +1,8 @@
-variable "function_name" {
+variable "lambda_function_name" {
   type = string
 }
 
-variable "image_uri" {
+variable "lambda_image_uri" {
   type = string
 }
 

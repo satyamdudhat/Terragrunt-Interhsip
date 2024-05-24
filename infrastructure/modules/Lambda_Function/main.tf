@@ -1,8 +1,8 @@
 resource "aws_lambda_function" "serverless_lambda_function" {
-  function_name    = var.function_name
+  function_name    = var.lambda_function_name
   architectures = ["x86_64"]
   package_type     = "Image"
-  image_uri        = var.image_uri
+  image_uri        = var.lambda_image_uri
   role             = aws_iam_role.serverless_lambda_execution_role.arn
 }
 
