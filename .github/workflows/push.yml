@@ -1,0 +1,13 @@
+name: "Push event"
+on:
+    push:
+        branches:
+            - feat/terragrunt
+jobs:
+    Job1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Checkout Repo"
+              uses: actions/checkout@v4
+
+        
