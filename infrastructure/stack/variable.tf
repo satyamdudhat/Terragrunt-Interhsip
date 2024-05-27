@@ -10,3 +10,8 @@ variable "env" {
   type = string
   default = "dev"
 }
+
+variable "profile" {
+  type = string
+  default = "satyam"
+}

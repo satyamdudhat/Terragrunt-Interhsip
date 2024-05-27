@@ -1,5 +1,5 @@
 provider "aws" {
-  profile = "satyam"
+  profile = var.profile
 }
 
 # ApiGateway Table Resource Code
