@@ -1,1 +1,1 @@
-Env = "Prod"
+env = "prod"
