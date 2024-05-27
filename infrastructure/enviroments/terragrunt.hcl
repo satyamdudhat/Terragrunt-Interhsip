@@ -8,9 +8,9 @@ remote_state {
   config = {
     bucket         = "satyam-terragrunts"
     key            = "${path_relative_to_include()}/terraform.tfstate"
-    region         = locals.default_region
+    region         = local.default_region
     encrypt        = true
-    profile        = locals.aws_profile
+    profile        = local.aws_profile
   }
 }
 
