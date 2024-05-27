@@ -3,7 +3,7 @@
 
 variable "Project" {
   type = string
-  default = "Serverless"
+  default = "serverless"
 }
 
 variable "Env" {
