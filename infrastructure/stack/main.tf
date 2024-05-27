@@ -57,7 +57,7 @@ module "lambda_function" {
 #     bucket = "satyam-terragrunts"
 #     key    = "terraform.tfstate"
 #     region = "ap-south-1"
-#     profile = "satyam"
+#     profile = "var.profile"
 #   }
 # }
 
