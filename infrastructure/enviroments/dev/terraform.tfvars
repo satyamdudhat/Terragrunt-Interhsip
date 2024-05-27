@@ -1,1 +1,1 @@
-env = "dev"
+prefix = "project-dev"

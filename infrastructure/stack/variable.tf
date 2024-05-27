@@ -15,3 +15,7 @@ variable "profile" {
   type = string
   default = "satyam"
 }
+
+variable "prefix" {
+  type = string
+}
