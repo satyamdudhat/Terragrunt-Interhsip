@@ -2,11 +2,6 @@ provider "aws" {
   profile = var.profile
 }
 
-# locals {
-#   prefix = "${var.project}-${var.env}"
-# }
-
-
 # ApiGateway Table Resource Code
 module "api_gateway" {
   source           = "../modules/Api_Gateway"
@@ -56,17 +51,6 @@ module "lambda_function" {
     aws = aws
   }
 }
-
-# terraform {
-#   backend "s3" {
-#     bucket = "satyam-terragrunts"
-#     key    = "terraform.tfstate"
-#     region = "ap-south-1"
-#     profile = "var.profile"
-#   }
-# }
-
-
 
 terraform {
   backend "s3" {
