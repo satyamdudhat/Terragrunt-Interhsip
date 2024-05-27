@@ -19,6 +19,12 @@ jobs:
                 AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
             
+    Job2:
+          runs-on: ubuntu-latest
+          steps:
+            - name: "Checkout Repo"
+              uses: actions/checkout@v4
+
             - name: Initialize Terragrunt
               working-directory: infrastructure/enviroments/dev/
               run: |
