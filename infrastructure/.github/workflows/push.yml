@@ -20,5 +20,6 @@ jobs:
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
             
             - name: Initialize Terragrunt
-              working-directory: infrastructure/enviroments/dev
-              run: terragrunt init
+              working-directory: infrastructure/enviroments/dev/
+              run: |
+                terragrunt init
