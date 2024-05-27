@@ -19,6 +19,6 @@ jobs:
                 AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
             
-            - name: "Terragrunt Init"
-              run: bash ./scripts/dev_terragrunt_init.sh
-        
+            - name: Initialize Terragrunt
+              working-directory: infrastructure/enviroments/dev
+              run: terragrunt init
