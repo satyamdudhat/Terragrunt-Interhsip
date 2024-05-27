@@ -10,7 +10,7 @@ jobs:
             - name: "Checkout Repo"
               uses: actions/checkout@v4
 
-            - name: "Aws && Terrgrunt Configuration"
+            - name: "Aws,Terraform && Terrgrunt Configuration"
               uses:  ./.github/actions/aws_terragrunt_configuration 
               with:
                 AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
@@ -18,6 +18,8 @@ jobs:
                 AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
                 AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
-      
-            
-        
+
+            - name: Initialize Terragrunt
+              working-directory: infrastructure/enviroments/dev/
+              run: |
+                terragrunt init
