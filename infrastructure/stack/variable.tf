@@ -1,11 +1,11 @@
 
 #---------------------------Resourse Name 
 
-variable "Project" {
+variable "project" {
   type = string
   default = "serverless"
 }
 
-variable "Env" {
+variable "env" {
   type = string
 }
