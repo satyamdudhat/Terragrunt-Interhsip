@@ -16,6 +16,6 @@ variable "profile" {
   default = "satyam"
 }
 
-# variable "prefix" {
-#   type = string
-# }
+variable "prefix" {
+  type = string
+}
