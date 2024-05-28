@@ -1,1 +1,1 @@
-env = "prod"
+prefix = "project-prod"

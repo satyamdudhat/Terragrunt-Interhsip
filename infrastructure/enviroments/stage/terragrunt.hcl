@@ -3,7 +3,7 @@ include {
 }
 
 terraform{
-    source = "../../stack"
+    source = "../..//stack/"
 
 
 extra_arguments "custom_vars" {

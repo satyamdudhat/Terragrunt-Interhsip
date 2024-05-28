@@ -1,1 +1,1 @@
-env = "stage"
+prefix = "project-stage"
