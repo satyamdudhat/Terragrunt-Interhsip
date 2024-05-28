@@ -64,6 +64,12 @@ jobs:
         #     AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
         #     GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
+        - name: ECR REPO CHECK
+          run: |
+             bash infrastructure/scripts/ecr_rpo_check.sh
+          env:
+            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+            
         - name: "Terragrunt Plan"
           working-directory: infrastructure/enviroments/dev/
           run: |
