@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "serverless_lambda_function" {
-  function_name    = var.lambda_function_name
+  function_name    = "${var.prefix}-lambdaproject"
   architectures = ["x86_64"]
   package_type     = "Image"
   image_uri        = var.lambda_image_uri
@@ -9,7 +9,7 @@ resource "aws_lambda_function" "serverless_lambda_function" {
 
 # Lmabda Role
 resource "aws_iam_role" "serverless_lambda_execution_role" {
-  name               = var.iam_role_name
+  name               = "${var.prefix}-iamrole"
   assume_role_policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [{
@@ -24,7 +24,7 @@ resource "aws_iam_role" "serverless_lambda_execution_role" {
 
 # IAM Policy for ECR Access or we can say that which wchi action can be do by lambda in ecr
 resource "aws_iam_policy" "serverless_lambda_ecr_access_policy" {
-  name        = var.ecr_access_policy
+  name        = "${var.prefix}-ecraccess"
   description = "Policy for granting Lambda access to ECR repositories"
   policy      = jsonencode({
     Version = "2012-10-17",
@@ -47,7 +47,7 @@ resource "aws_iam_policy" "serverless_lambda_ecr_access_policy" {
 
 
 resource "aws_iam_policy" "serverless_dynamodb_access_policy" {
-  name        = var.dyanmodb_access_policy
+  name        = "${var.prefix}-dyanmodbaccess"
   description = "Policy for granting Lambda access to DyanmoDb Table"
   policy      = jsonencode({
     "Version": "2012-10-17",
@@ -65,7 +65,7 @@ resource "aws_iam_policy" "serverless_dynamodb_access_policy" {
 
 
 resource "aws_iam_policy" "serverless_cloudwatch_logs_policy" {
-  name        = var.cloudwatch_access_policy
+  name        = "${var.prefix}-cloudwatchaccess"
   description = "Allows Lambda function to have full access to CloudWatch Logs"
 
   policy = jsonencode({

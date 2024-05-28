@@ -40,17 +40,14 @@ module "ecr_repo" {
 
 # Lambda Code
 module "lambda_function" {
-  lambda_function_name = "${var.prefix}-lambdaproject"
   source = "../modules/Lambda_Function"
   lambda_image_uri = "${module.ecr_repo.repository_url}:latest"
-  iam_role_name = "${var.prefix}-iamrole"
-  ecr_access_policy = "${var.prefix}-ecraccess"
-  dyanmodb_access_policy = "${var.prefix}-dyanmodbaccess"
-  cloudwatch_access_policy = "${var.prefix}-cloudwatchaccess"
+  prefix = var.prefix
   providers = {
     aws = aws
   }
 }
+
 
 terraform {
   backend "s3" {
