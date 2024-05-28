@@ -72,5 +72,5 @@ jobs:
         - name: "Terragrunt Apply"
           working-directory: infrastructure/enviroments/dev/
           run: |
-            terragrunt Apply -auto-approve
+            terragrunt apply -auto-approve
                 
