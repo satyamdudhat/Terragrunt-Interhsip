@@ -68,4 +68,9 @@ jobs:
           working-directory: infrastructure/enviroments/dev/
           run: |
             terragrunt plan
+        
+        - name: "Terragrunt Apply"
+          working-directory: infrastructure/enviroments/dev/
+          run: |
+            terragrunt Apply -auto-approve
                 
