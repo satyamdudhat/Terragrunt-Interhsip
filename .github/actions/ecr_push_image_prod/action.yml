@@ -18,7 +18,7 @@ runs:
   using: 'composite'
   steps:
     - name: Check ECR Repository
-      run: bash infrastructure/scripts/ecr_rpo_check_prod.sh
+      run: bash infrastructure/scripts/ecr_repo_check_prod.sh
       env:
         AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
       shell: bash
