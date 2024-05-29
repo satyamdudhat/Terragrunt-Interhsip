@@ -7,9 +7,6 @@ on:
         branches:
           - feat/terragrunt
 
-env:
-  $WORKING_DIR: Terragrunt-Interhsip/infrastructure/enviroments/dev
-
 jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
@@ -61,24 +58,25 @@ jobs:
         - name: "Initialize Terragrunt"
           working-directory: infrastructure/enviroments/dev/
           run: |
-            pwd
-
-        # - name: Check Repsoitery and Push Image
-        #   uses: ./.github/actions/ecr_push_image
-        #   with:
-        #     AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
-        #     AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
-        #     AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
-        #     GITHUB_COMMIT_HASH: '${{ github.sha }}'
+              terragrunt init
 
 
-        # - name: "Terragrunt Plan"
-        #   working-directory: infrastructure/enviroments/dev/
-        #   run: |
-        #     terragrunt plan
+        - name: Check Repsoitery and Push Image
+          uses: ./.github/actions/ecr_push_image
+          with:
+            AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+            AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+            GITHUB_COMMIT_HASH: '${{ github.sha }}'
+
+
+        - name: "Terragrunt Plan"
+          working-directory: infrastructure/enviroments/dev/
+          run: |
+            terragrunt plan
         
-        # - name: "Terragrunt Apply"
-        #   working-directory: infrastructure/enviroments/dev/
-        #   run: |
-        #     terragrunt apply -auto-approve
+        - name: "Terragrunt Apply"
+          working-directory: infrastructure/enviroments/dev/
+          run: |
+            terragrunt apply -auto-approve
                 
