@@ -49,7 +49,6 @@ module "lambda_function" {
   }
 }
 
-
 terraform {
   backend "s3" {
     
