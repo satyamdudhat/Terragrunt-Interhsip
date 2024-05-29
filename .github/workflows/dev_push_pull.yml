@@ -6,8 +6,9 @@ on:
     pull_request:
         branches:
           - feat/terragrunt
+
 env:
-  $WORKING_DIR = Terragrunt-Interhsip/infrastructure/enviroments/dev
+  $WORKING_DIR: Terragrunt-Interhsip/infrastructure/enviroments/dev
 
 jobs:
     Pulls-request:
