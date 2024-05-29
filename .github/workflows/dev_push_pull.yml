@@ -62,8 +62,6 @@ jobs:
           working-directory: infrastructure/enviroments/dev/
           run: |
             pwd
-            terragrunt init -wd=$WORKING_DIR
-
 
         # - name: Check Repsoitery and Push Image
         #   uses: ./.github/actions/ecr_push_image
