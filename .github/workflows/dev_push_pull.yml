@@ -6,6 +6,8 @@ on:
     pull_request:
         branches:
           - feat/terragrunt
+env:
+  WORKING_DIR: infrastructure/enviroments/dev
 
 jobs:
     Pulls-request:
@@ -27,14 +29,14 @@ jobs:
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
             - name: "Initialize Terragrunt"
-              working-directory: infrastructure/enviroments/dev/
               run: |
-                terragrunt init
+                terragrunt init -wd=$WORKING_DIR
+
 
             - name: "Terragrunt Plan"
-              working-directory: infrastructure/enviroments/dev/
               run: |
-                terragrunt plan
+                terragrunt plan -wd=$WORKING_DIR
+
     
 
     Push-Request:
@@ -56,9 +58,9 @@ jobs:
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
         - name: "Initialize Terragrunt"
-          working-directory: infrastructure/enviroments/dev/
           run: |
-            terragrunt init
+            terragrunt init -wd=$WORKING_DIR
+
 
         - name: Check Repsoitery and Push Image
           uses: ./.github/actions/ecr_push_image
@@ -69,12 +71,11 @@ jobs:
             GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
         - name: "Terragrunt Plan"
-          working-directory: infrastructure/enviroments/dev/
           run: |
-            terragrunt plan
+            terragrunt plan -wd=$WORKING_DIR
+
         
         - name: "Terragrunt Apply"
-          working-directory: infrastructure/enviroments/dev/
           run: |
-            terragrunt apply -auto-approve
+            terragrunt apply -wd=$WORKING_DIR
                 
