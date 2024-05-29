@@ -21,3 +21,7 @@ variable "prefix" {
   default = "project-dev"
 }
 
+variable "region" {
+  type = string
+  default = "ap-south-1"
+}

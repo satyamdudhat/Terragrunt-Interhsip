@@ -1,0 +1,81 @@
+name: "Push event"
+on:
+    push:
+        branches:
+            - feat/terragrunt
+    pull_request:
+        branches:
+          - feat/terragrunt
+
+jobs:
+    Pulls-request:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        environment:
+          name: "Dev"
+        steps:
+            - name: "Checkout Repo"
+              uses: actions/checkout@v4
+
+            - name: "Aws,Terraform && Terrgrunt Configuration"
+              uses:  ./.github/actions/aws_terragrunt_configuration 
+              with:
+                AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+                AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+                AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+                AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+                AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+
+            - name: "Initialize Terragrunt"
+              working-directory: infrastructure/enviroments/dev/
+              run: |
+                terragrunt init
+
+            - name: "Terragrunt Plan"
+              working-directory: infrastructure/enviroments/dev/
+              run: |
+                terragrunt plan
+    
+
+    Push-Request:
+      if: github.event_name == 'push'
+      runs-on: ubuntu-latest
+      environment:
+        name: "Dev"
+      steps:
+        - name: "Checkout Repo"
+          uses: actions/checkout@v4
+
+        - name: "Aws,Terraform && Terrgrunt Configuration"
+          uses:  ./.github/actions/aws_terragrunt_configuration 
+          with:
+            AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+            AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+            AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+            AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+
+        - name: "Initialize Terragrunt"
+          working-directory: infrastructure/enviroments/dev/
+          run: |
+            terragrunt init
+
+
+        - name: Check Repsoitery and Push Image
+          uses: ./.github/actions/ecr_push_image
+          with:
+            AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+            AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+            GITHUB_COMMIT_HASH: '${{ github.sha }}'
+
+        - name: "Terragrunt Plan"
+          working-directory: infrastructure/enviroments/dev/
+          run: |
+            terragrunt plan
+        
+        - name: "Terragrunt Apply"
+          working-directory: infrastructure/enviroments/dev/
+          run: |
+            terragrunt apply -auto-approve
+                
