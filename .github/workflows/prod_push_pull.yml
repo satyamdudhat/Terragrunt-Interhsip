@@ -2,19 +2,20 @@ name: "Push event"
 on:
     push:
         branches:
-            - feat/terragrunt
+            - feat/prod
     pull_request:
         branches:
-          - feat/terragrunt
+          - feat/prod
 env:
-  WORKING_DIR: /infrastructure/enviroments/dev
+  WORKING_DIR: infrastructure/enviroments/prod
+
 
 jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
-        environment:
-          name: "Dev"
+        environment: 
+          name: "Prod"
         steps:
             - name: "Checkout Repo"
               uses: actions/checkout@v4
@@ -32,18 +33,16 @@ jobs:
               run: |
                 terragrunt init -wd=$WORKING_DIR
 
-
             - name: "Terragrunt Plan"
               run: |
                 terragrunt plan -wd=$WORKING_DIR
-
     
 
     Push-Request:
       if: github.event_name == 'push'
       runs-on: ubuntu-latest
-      environment:
-        name: "Dev"
+      environment: 
+          name: "Prod"
       steps:
         - name: "Checkout Repo"
           uses: actions/checkout@v4
@@ -61,9 +60,8 @@ jobs:
           run: |
             terragrunt init -wd=$WORKING_DIR
 
-
         - name: Check Repsoitery and Push Image
-          uses: ./.github/actions/ecr_push_image
+          uses: ./.github/actions/ecr_push_image_prod
           with:
             AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
@@ -73,9 +71,8 @@ jobs:
         - name: "Terragrunt Plan"
           run: |
             terragrunt plan -wd=$WORKING_DIR
-
         
         - name: "Terragrunt Apply"
           run: |
-            terragrunt apply -wd=$WORKING_DIR
+            terragrunt apply -auto-approve -wd=$WORKING_DIR
                 
