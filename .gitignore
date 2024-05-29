@@ -1,6 +1,5 @@
 .terraform/
 .DS_Store
 .terragrunt-cache
-*.tfvars
+terraform.tfvars
 variable.tf
-*.auto.tfvars
