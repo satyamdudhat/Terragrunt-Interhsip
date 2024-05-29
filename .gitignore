@@ -3,3 +3,4 @@
 .terragrunt-cache
 *.tfvars
 variable.tf
+*.auto.tfvars
