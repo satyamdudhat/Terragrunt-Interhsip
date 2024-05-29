@@ -59,9 +59,10 @@ jobs:
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
         - name: "Initialize Terragrunt"
+          working-directory: infrastructure/enviroments/dev/
           run: |
-            terragrunt init -wd=$WORKING_DIR
             pwd
+            terragrunt init -wd=$WORKING_DIR
 
 
         # - name: Check Repsoitery and Push Image
