@@ -11,6 +11,8 @@ jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
+        environment: 
+          name: "Prod"
         steps:
             - name: "Checkout Repo"
               uses: actions/checkout@v4
@@ -38,6 +40,8 @@ jobs:
     Push-Request:
       if: github.event_name == 'push'
       runs-on: ubuntu-latest
+      environment: 
+          name: "Prod"
       steps:
         - name: "Checkout Repo"
           uses: actions/checkout@v4
