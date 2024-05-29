@@ -69,12 +69,12 @@ jobs:
             GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
         - name: "Terragrunt Plan"
-          working-directory: infrastructure/enviroments/dev/
+          # working-directory: infrastructure/enviroments/dev/
           run: |
             terragrunt plan
         
         - name: "Terragrunt Apply"
-          working-directory: infrastructure/enviroments/dev/
+          # working-directory: infrastructure/enviroments/dev/
           run: |
             terragrunt apply -auto-approve
                 
