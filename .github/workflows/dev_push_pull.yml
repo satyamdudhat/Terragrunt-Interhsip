@@ -7,7 +7,7 @@ on:
         branches:
           - feat/terragrunt
 env:
-  WORKING_DIR: infrastructure/enviroments/dev
+  WORKING_DIR: ./infrastructure/enviroments/dev
 
 jobs:
     Pulls-request:
