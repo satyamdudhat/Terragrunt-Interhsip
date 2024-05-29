@@ -59,7 +59,7 @@ jobs:
           working-directory: infrastructure/enviroments/dev/
           run: |
             terragrunt init
-            echo "${{ github.workspace }}"
+            pwd
 
 
         - name: Check Repsoitery and Push Image
