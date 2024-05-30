@@ -26,12 +26,8 @@ install-tf-tg:
 	@tfenv install $(TERRAFORM_VERSION)
 	@tgenv install $(TERRAGRUNT_VERSION)
 
-set-tf-tg-version: install-tf-tg
-	@tfenv use $(TERRAFORM_VERSION)
-	@tgenv use $(TERRAGRUNT_VERSION)
-
 # Terragrunt Command
-init plan apply show destroy: set-tf-tg-version
+init plan apply show destroy: install-tf-tg
 	@cd $(TERRAGRUNT_PATH) && terragrunt $@
 
 tftarget:
