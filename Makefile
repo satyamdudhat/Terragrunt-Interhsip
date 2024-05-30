@@ -3,10 +3,14 @@ _AWS_PROFILE=satyam
 _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
 
+
+
 .EXPORT_ALL_VARIABLES:
 TF_VAR_aws_profile=$(_AWS_PROFILE)
 TF_VAR_aws_region=$(_AWS_REGION)
 TF_VAR_tf_bucket=$(_AWS_BUCKET)
+
+
 
 # Check Which Environment is using 
 ifeq ($(ENV),dev)
@@ -21,10 +25,14 @@ else
     $(error Unknown environment: $(ENV))
 endif
 
+
+
 # Install and set a Terraform and Terragrunt version
 install-tf-tg:
 	@tfenv install $(TERRAFORM_VERSION)
 	@tgenv install $(TERRAGRUNT_VERSION)
+
+
 
 # Terragrunt Command
 init plan apply show destroy: install-tf-tg
