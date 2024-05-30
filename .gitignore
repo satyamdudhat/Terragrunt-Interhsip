@@ -3,3 +3,5 @@
 .terragrunt-cache
 terraform.tfvars
 variable.tf
+!.terraform-version
+!.terragrunt-version
