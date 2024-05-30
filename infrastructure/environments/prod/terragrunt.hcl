@@ -5,7 +5,6 @@ include {
 terraform{
     source = "../..//stack/"
 
-
 extra_arguments "custom_vars" {
     commands = [
       "apply",
