@@ -1,0 +1,76 @@
+name: "Push event"
+on:
+    push:
+        branches:
+            -  task_review
+    pull_request:
+        branches:
+          - task_review
+
+env:
+  TF_VAR_prefix: "project-dev"
+  TF_VAR_aws_profile: "satyam"
+  TF_VAR_aws_region: "ap-south-1"
+  TF_VAR_tf_bucket: "satyam-terragrunts"
+
+jobs:
+    Pulls-request:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        environment:
+          name: "Prod"
+        steps:
+            - name: "Checkout Repo"
+              uses: actions/checkout@v4
+
+            - name: "Aws,Terraform && Terrgrunt Configuration"
+              uses:  ./.github/actions/aws_terragrunt_configuration 
+              with:
+                AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+                AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+                AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+                AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+                AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+
+            - name: "Initialize Terragrunt"
+              run: make init
+
+            - name: "Terragrunt Plan"
+              run: make plan
+    
+
+    Push-Request:
+      if: github.event_name == 'push'
+      runs-on: ubuntu-latest
+      environment:
+        name: "Prod"
+      steps:
+        - name: "Checkout Repo"
+          uses: actions/checkout@v4
+
+        - name: "Aws,Terraform && Terrgrunt Configuration"
+          uses:  ./.github/actions/aws_terragrunt_configuration 
+          with:
+            AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+            AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+            AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+            AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+
+        - name: "Initialize Terragrunt"
+          run: make init
+
+        - name: Check Repsoitery and Push Image
+          uses: ./.github/actions/ecr_push_image_prod
+          with:
+            AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+            AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+            GITHUB_COMMIT_HASH: '${{ github.sha }}'
+
+        - name: "Terragrunt Plan"
+          run: make plan
+        
+        - name: "Terragrunt Apply"
+          run: make apply-ci
+                

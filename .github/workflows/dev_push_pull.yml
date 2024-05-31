@@ -5,10 +5,10 @@ on:
             - task_review
     pull_request:
         branches:
-          - main
+          - task_review
 
 env:
-  TF_VAR_prefix: "project-dev"
+  TF_VAR_prefix: "project-prod"
   TF_VAR_aws_profile: "satyam"
   TF_VAR_aws_region: "ap-south-1"
   TF_VAR_tf_bucket: "satyam-terragrunts"
@@ -61,7 +61,7 @@ jobs:
           run: make init
 
         - name: Check Repsoitery and Push Image
-          uses: ./.github/actions/ecr_push_image
+          uses: ./.github/actions/ecr_push_image_dev
           with:
             AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
