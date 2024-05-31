@@ -71,6 +71,6 @@ jobs:
         - name: "Terragrunt Plan"
           run: make plan
         
-        - name: "Terragrunt Apply"
-          run: make apply-ci
+        - name: "Terragrunt Destroy"
+          run: terragrunt destroy -auto-approve
                 
