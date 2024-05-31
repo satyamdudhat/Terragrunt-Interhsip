@@ -8,7 +8,7 @@ on:
           - main
 
 env:
-  TF_VAR_prefix = "project-dev"
+  TF_VAR_prefix: "project-dev"
 
 jobs:
     Pulls-request:
