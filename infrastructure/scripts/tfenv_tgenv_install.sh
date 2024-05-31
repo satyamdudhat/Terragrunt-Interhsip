@@ -9,3 +9,5 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv
 echo 'export PATH="$HOME/.tgenv/bin:$PATH"' >> ~/.bashrc
 export PATH="$HOME/.tgenv/bin:$PATH"
+
+echo "PATH during script execution: $PATH"

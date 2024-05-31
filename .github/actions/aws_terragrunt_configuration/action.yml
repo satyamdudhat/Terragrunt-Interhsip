@@ -35,7 +35,8 @@ runs:
       run: |
         bash infrastructure/scripts/tfenv_tgenv_install.sh
         export PATH=$HOME/.tfenv/bin:$HOME/.tgenv/bin:$PATH
+        echo "PATH after installation: $PATH"
         make install-tf-tg
       env:
-        PATH: ${{ runner.home }}/.tfenv/bin:${{ runner.home }}/.tgenv/bin:$PATH
+       PATH: ${{ runner.home }}/.tfenv/bin:${{ runner.home }}/.tgenv/bin:$PATH
       shell: bash
