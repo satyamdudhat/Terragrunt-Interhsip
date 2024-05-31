@@ -1,38 +1,37 @@
 name: "Configuration"
-description: "Configuration of aws and install terraform , terragrunt"
+description: "Configuration of AWS and install Terraform, Terragrunt"
 
 inputs:
   AWS_ACCOUNT_ID:
-    description: 'A Github AWS_ACCOUNT_ID'
+    description: 'AWS Account ID'
     required: true
   AWS_PROFILE:
-    description: 'A Github AWS_PROFILE'
+    description: 'AWS Profile'
     required: true
   AWS_ACCESS_KEY_ID:
-    description: 'A Github AWS_ACCESS_KEY_ID'
+    description: 'AWS Access Key ID'
     required: true
   AWS_SECRET_ACCESS_KEY:
-    description: 'A Github AWS_SECRET_ACCESS_KEY'
+    description: 'AWS Secret Access Key'
     required: true
   AWS_DEFAULT_REGION:
-    description: 'A Github AWS_DEFAULT_REGION'
+    description: 'AWS Default Region'
     required: true
-
 
 runs:
   using: 'composite'
   steps:
-  - name: Configuration Aws
-    run: bash infrastructure/scripts/aws_configuration.sh
-    env:
-      AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
-      AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
-      AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}
-    shell: bash
+    - name: Configuration AWS
+      run: bash infrastructure/scripts/aws_configuration.sh
+      env:
+        AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
+        AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
+        AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}
+      shell: bash
 
-  - name: Set up Terraform and Terragrunt
+    - name: Set up Terraform and Terragrunt
       run: |
         bash infrastructure/scripts/tfenv_tgenv_install.sh
         export PATH=$HOME/.tfenv/bin:$HOME/.tgenv/bin:$PATH
