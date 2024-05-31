@@ -5,6 +5,6 @@ if aws ecr describe-repositories --repository-names "project-prod-ecr" --profile
     echo "::set-output name=exists::true"
 else
     echo "ECR repository not exists"
-    cd infrastructure/enviroments/prod/
+    cd infrastructure/environments/prod/
     terragrunt apply -auto-approve -target=module.ecr_repo
 fi
