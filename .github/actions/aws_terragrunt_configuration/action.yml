@@ -33,5 +33,7 @@ runs:
     shell: bash
 
   - name: Set up Terraform and Terragrunt
-    run: make install-tf-tg
+    run: |
+      bash infrastructure/scripts/tfenv_tgenv_install.sh
+      make install-tf-tg
     shell: bash
