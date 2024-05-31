@@ -1,0 +1,37 @@
+name: "Configuration"
+description: "Configuration of aws and install terraform , terragrunt"
+
+inputs:
+  AWS_ACCOUNT_ID:
+    description: 'A Github AWS_ACCOUNT_ID'
+    required: true
+  AWS_PROFILE:
+    description: 'A Github AWS_PROFILE'
+    required: true
+  AWS_ACCESS_KEY_ID:
+    description: 'A Github AWS_ACCESS_KEY_ID'
+    required: true
+  AWS_SECRET_ACCESS_KEY:
+    description: 'A Github AWS_SECRET_ACCESS_KEY'
+    required: true
+  AWS_DEFAULT_REGION:
+    description: 'A Github AWS_DEFAULT_REGION'
+    required: true
+
+
+runs:
+  using: 'composite'
+  steps:
+  - name: Configuration Aws
+    run: bash infrastructure/scripts/aws_configuration.sh
+    env:
+      AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
+      AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
+      AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}
+    shell: bash
+
+  - name: Set up Terraform and Terragrunt
+    run: bash infrastructure/scripts/terragrunt_install.sh
+    shell: bash
