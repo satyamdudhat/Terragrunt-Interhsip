@@ -33,14 +33,10 @@ jobs:
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
             - name: "Initialize Terragrunt"
-              working-directory: infrastructure/environments/dev/
-              run: |
-                terragrunt init
+              run: make init
 
             - name: "Terragrunt Plan"
-              working-directory: infrastructure/environments/dev/
-              run: |
-                terragrunt plan
+              run: make plan
     
 
     Push-Request:
@@ -62,9 +58,7 @@ jobs:
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
         - name: "Initialize Terragrunt"
-          working-directory: infrastructure/environments/dev/
-          run: |
-            terragrunt init
+          run: make init
 
         - name: Check Repsoitery and Push Image
           uses: ./.github/actions/ecr_push_image
@@ -75,12 +69,8 @@ jobs:
             GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
         - name: "Terragrunt Plan"
-          working-directory: infrastructure/environments/dev/
-          run: |
-            terragrunt plan
+          run: make plan
         
         - name: "Terragrunt Apply"
-          working-directory: infrastructure/environments/dev/
-          run: |
-            terragrunt apply -auto-approve
+          run: make apply-ci
                 

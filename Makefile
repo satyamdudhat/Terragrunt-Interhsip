@@ -27,3 +27,6 @@ tftarget:
 
 tfdestroy:
 	@cd $(TERRAGRUNT_PATH) && terragrunt destroy -target $(resource_id)
+
+apply-ci:
+	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve
