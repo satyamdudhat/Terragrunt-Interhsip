@@ -2,10 +2,10 @@ variable "prefix" {
   type = string
 }
 
-variable "profile" {
+variable "aws_profile" {
   type = string
 }
 
-variable "region" {
+variable "aws_region" {
   type = string
 }

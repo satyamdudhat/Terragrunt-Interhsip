@@ -1,6 +1,6 @@
 provider "aws" {
-  profile = var.profile
-  region = var.region
+  profile = var.aws_profile
+  region = var.aws_region
 }
 
 # ApiGateway Table Resource Code
