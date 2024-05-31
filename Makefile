@@ -19,7 +19,6 @@ TF_VAR_prefix=$(prefix)
 # 	@tfenv install $(TERRAFORM_VERSION)
 # 	@tgenv install $(TERRAGRUNT_VERSION)
 
-
 tf:
 	@tfswitch
 	@tgswitch
