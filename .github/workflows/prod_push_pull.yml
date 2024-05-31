@@ -60,13 +60,13 @@ jobs:
         - name: "Initialize Terragrunt"
           run: make init
 
-        - name: Check Repsoitery and Push Image
-          uses: ./.github/actions/ecr_push_image_prod
-          with:
-            AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
-            AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
-            AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
-            GITHUB_COMMIT_HASH: '${{ github.sha }}'
+        # - name: Check Repsoitery and Push Image
+        #   uses: ./.github/actions/ecr_push_image_prod
+        #   with:
+        #     AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+        #     AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
+        #     AWS_PROFILE: '${{secrets.AWS_PROFILE}}'
+        #     GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
         - name: "Terragrunt Plan"
           run: make plan
