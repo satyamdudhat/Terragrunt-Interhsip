@@ -5,13 +5,14 @@ _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
 # TERRAFORM_VERSION = 1.8.3
 # TERRAGRUNT_VERSION = 0.58.4
+prefix=project-prod
 
 
 .EXPORT_ALL_VARIABLES:
 TF_VAR_aws_profile=$(_AWS_PROFILE)
 TF_VAR_aws_region=$(_AWS_REGION)
 TF_VAR_tf_bucket=$(_AWS_BUCKET)
-
+TF_VAR_prefix=$(prefix)
 
 # Install and set a Terraform and Terragrunt version
 # install-tf-tg:
