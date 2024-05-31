@@ -30,12 +30,12 @@ jobs:
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
             - name: "Initialize Terragrunt"
-              working-directory: infrastructure/enviroments/dev/
+              working-directory: infrastructure/environments/dev/
               run: |
                 terragrunt init
 
             - name: "Terragrunt Plan"
-              working-directory: infrastructure/enviroments/dev/
+              working-directory: infrastructure/environments/dev/
               run: |
                 terragrunt plan
     
@@ -59,7 +59,7 @@ jobs:
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
         - name: "Initialize Terragrunt"
-          working-directory: infrastructure/enviroments/dev/
+          working-directory: infrastructure/environments/dev/
           run: |
             terragrunt init
 
@@ -72,12 +72,12 @@ jobs:
             GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
         - name: "Terragrunt Plan"
-          working-directory: infrastructure/enviroments/dev/
+          working-directory: infrastructure/environments/dev/
           run: |
             terragrunt plan
         
         - name: "Terragrunt Apply"
-          working-directory: infrastructure/enviroments/dev/
+          working-directory: infrastructure/environments/dev/
           run: |
             terragrunt apply -auto-approve
                 
