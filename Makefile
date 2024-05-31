@@ -36,3 +36,6 @@ tfdestroy:
 
 apply-ci:
 	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve
+
+destroy-ci:
+	@cd $(TERRAGRUNT_PATH) && terragrunt destroy -auto-approve
