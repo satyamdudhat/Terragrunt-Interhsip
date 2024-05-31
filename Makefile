@@ -3,8 +3,8 @@ TERRAGRUNT_PATH = infrastructure/environments/dev/
 _AWS_PROFILE=satyam
 _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
-TERRAFORM_VERSION = 1.8.3
-TERRAGRUNT_VERSION = 0.58.4
+# TERRAFORM_VERSION = 1.8.3
+# TERRAGRUNT_VERSION = 0.58.4
 
 
 .EXPORT_ALL_VARIABLES:
@@ -14,12 +14,17 @@ TF_VAR_tf_bucket=$(_AWS_BUCKET)
 
 
 # Install and set a Terraform and Terragrunt version
-install-tf-tg:
-	@tfenv install $(TERRAFORM_VERSION)
-	@tgenv install $(TERRAGRUNT_VERSION)
+# install-tf-tg:
+# 	@tfenv install $(TERRAFORM_VERSION)
+# 	@tgenv install $(TERRAGRUNT_VERSION)
+
+
+tf:
+	@tfswitch
+	@tgswitch
 
 # Terragrunt Command
-init plan apply show destroy: install-tf-tg
+init plan apply show destroy: tf
 	@cd $(TERRAGRUNT_PATH) && terragrunt $@
 
 tftarget:
