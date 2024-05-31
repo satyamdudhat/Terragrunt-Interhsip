@@ -72,6 +72,5 @@ jobs:
           run: make plan
         
         - name: "Terragrunt Destroy"
-          working-directory: infrastructure/enviroments/prod/
-          run: terragrunt destroy -auto-approve
+          run: make apply-ci
                 
