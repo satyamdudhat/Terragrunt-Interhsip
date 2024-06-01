@@ -9,6 +9,8 @@ remote_state {
   }
 }
 
+
+
 locals {
   tf_bucket   = get_env("TF_VAR_tf_bucket")
   aws_profile = get_env("TF_VAR_aws_profile")
