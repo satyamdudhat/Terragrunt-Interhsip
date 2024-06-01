@@ -6,13 +6,7 @@ on:
     pull_request:
         branches:
           - feat/prod
-
-# env:
-#   TF_VAR_prefix: "project-prod"
-#   TF_VAR_aws_profile: "satyam"
-#   TF_VAR_aws_region: "ap-south-1"
-#   TF_VAR_tf_bucket: "satyam-terragrunts"
-
+          
 jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
