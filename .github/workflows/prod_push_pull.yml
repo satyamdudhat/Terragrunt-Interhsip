@@ -7,11 +7,6 @@ on:
         branches:
           - feat/prod
 
-# env:
-#   TF_VAR_prefix: "project-dev"
-#   TF_VAR_aws_profile: "satyam"
-#   TF_VAR_aws_region: "ap-south-1"
-#   TF_VAR_tf_bucket: "satyam-terragrunts"
 
 jobs:
     Pulls-request:
