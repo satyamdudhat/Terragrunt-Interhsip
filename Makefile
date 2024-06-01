@@ -1,5 +1,5 @@
 ENV ?= dev
-TERRAGRUNT_PATH = infrastructure/environments/${dev}/
+TERRAGRUNT_PATH = infrastructure/environments/${ENV}/
 _AWS_PROFILE=satyam
 _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
