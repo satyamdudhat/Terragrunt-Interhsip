@@ -1,11 +1,11 @@
-ENV ?= prod
-TERRAGRUNT_PATH = infrastructure/environments/prod/
+ENV ?= dev
+TERRAGRUNT_PATH = infrastructure/environments/${dev}/
 _AWS_PROFILE=satyam
 _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
 # TERRAFORM_VERSION = 1.8.3
 # TERRAGRUNT_VERSION = 0.58.4
-prefix=project-prod
+prefix=project-dev
 
 
 .EXPORT_ALL_VARIABLES:

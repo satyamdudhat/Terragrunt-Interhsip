@@ -7,18 +7,18 @@ on:
         branches:
           - task_review
 
-env:
-  TF_VAR_prefix: "project-dev"
-  TF_VAR_aws_profile: "satyam"
-  TF_VAR_aws_region: "ap-south-1"
-  TF_VAR_tf_bucket: "satyam-terragrunts"
+# env:
+#   TF_VAR_prefix: "project-dev"
+#   TF_VAR_aws_profile: "satyam"
+#   TF_VAR_aws_region: "ap-south-1"
+#   TF_VAR_tf_bucket: "satyam-terragrunts"
 
 jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         environment:
-          name: "Prod"
+          name: "Dev"
         steps:
             - name: "Checkout Repo"
               uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
       if: github.event_name == 'push'
       runs-on: ubuntu-latest
       environment:
-        name: "Prod"
+        name: "Dev"
       steps:
         - name: "Checkout Repo"
           uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
           run: make init
 
         - name: Check Repsoitery and Push Image
-          uses: ./.github/actions/ecr_push_image_prod
+          uses: ./.github/actions/ecr_push_image_dev
           with:
             AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
