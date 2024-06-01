@@ -2,10 +2,10 @@ name: "Push event"
 on:
     push:
         branches:
-            -  task_review
+            -  feat/prod
     pull_request:
         branches:
-          - task_review
+          - feat/prod
 
 env:
   TF_VAR_prefix: "project-prod"
