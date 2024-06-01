@@ -1,23 +1,11 @@
-
-#---------------------------Resourse Name 
-
-variable "project" {
-  type = string
-  default = "serverless"
-}
-
-variable "env" {
-  type = string
-  default = "dev"
-}
-
-variable "profile" {
-  type = string
-  default = "satyam"
-}
-
 variable "prefix" {
   type = string
-  default = "project-dev"
 }
 
+variable "aws_profile" {
+  type = string
+}
+
+variable "aws_region" {
+  type = string
+}

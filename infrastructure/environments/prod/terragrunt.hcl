@@ -5,7 +5,6 @@ include {
 terraform{
     source = "../..//stack/"
 
-
 extra_arguments "custom_vars" {
     commands = [
       "apply",
@@ -15,7 +14,7 @@ extra_arguments "custom_vars" {
       "refresh"
     ]
 
-    required_var_files = ["terraform.tfvars"]
+    // required_var_files = ["terraform.tfvars"]
 
 }
 

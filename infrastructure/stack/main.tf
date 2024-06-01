@@ -1,5 +1,6 @@
 provider "aws" {
-  profile = var.profile
+  profile = var.aws_profile
+  region = var.aws_region
 }
 
 # ApiGateway Table Resource Code
@@ -47,7 +48,6 @@ module "lambda_function" {
     aws = aws
   }
 }
-
 
 terraform {
   backend "s3" {

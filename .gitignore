@@ -1,3 +1,6 @@
-.terraform/
+ **/.terraform/*
 .DS_Store
 .terragrunt-cache
+terraform.tfvars
+!.terraform-version
+!.terragrunt-version

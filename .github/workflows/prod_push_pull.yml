@@ -2,17 +2,23 @@ name: "Push event"
 on:
     push:
         branches:
-            - feat/prod
+            -  task_review
     pull_request:
         branches:
-          - feat/prod
+          - task_review
+
+env:
+  TF_VAR_prefix: "project-prod"
+  TF_VAR_aws_profile: "satyam"
+  TF_VAR_aws_region: "ap-south-1"
+  TF_VAR_tf_bucket: "satyam-terragrunts"
 
 jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         environment:
-          name: Prod
+          name: "Prod"
         steps:
             - name: "Checkout Repo"
               uses: actions/checkout@v4
@@ -27,22 +33,17 @@ jobs:
                 AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
             - name: "Initialize Terragrunt"
-              working-directory: infrastructure/enviroments/prod/
-              run: |
-                terragrunt init
+              run: make init
 
             - name: "Terragrunt Plan"
-              working-directory: infrastructure/enviroments/prod/
-              run: |
-                terragrunt plan
+              run: make plan
     
-
 
     Push-Request:
       if: github.event_name == 'push'
       runs-on: ubuntu-latest
       environment:
-        name: Prod
+        name: "Prod"
       steps:
         - name: "Checkout Repo"
           uses: actions/checkout@v4
@@ -57,9 +58,7 @@ jobs:
             AWS_DEFAULT_REGION: '${{ secrets.AWS_DEFAULT_REGION }}'
 
         - name: "Initialize Terragrunt"
-          working-directory: infrastructure/enviroments/prod/
-          run: |
-            terragrunt init
+          run: make init
 
         - name: Check Repsoitery and Push Image
           uses: ./.github/actions/ecr_push_image_prod
@@ -70,12 +69,8 @@ jobs:
             GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
         - name: "Terragrunt Plan"
-          working-directory: infrastructure/enviroments/prod/
-          run: |
-            terragrunt plan
+          run: make plan
         
-        - name: "Terragrunt Apply"
-          working-directory: infrastructure/enviroments/prod/
-          run: |
-            terragrunt apply -auto-approve
+        - name: "Terragrunt Destroy"
+          run: make apply-ci
                 

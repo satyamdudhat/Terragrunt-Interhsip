@@ -56,5 +56,3 @@ variable "employees_http_methods" {
   type    = list(string)
   default = ["GET"]
 }
-
-
