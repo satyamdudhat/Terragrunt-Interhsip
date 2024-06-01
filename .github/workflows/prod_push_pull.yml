@@ -39,7 +39,7 @@ jobs:
               run: make plan
     
 
-              
+
     Push-Request:
       if: github.event_name == 'push'
       runs-on: ubuntu-latest
@@ -72,6 +72,6 @@ jobs:
         - name: "Terragrunt Plan"
           run: make plan
         
-        - name: "Terragrunt Destroy"
+        - name: "Terragrunt Apply"
           run: make apply-ci
                 
