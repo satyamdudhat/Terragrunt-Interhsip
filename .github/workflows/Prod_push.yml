@@ -49,5 +49,5 @@ jobs:
           - name: Terragrunt plan Configuration
             run: make plan
           
-          - name: Terragrunt apply Configuration
-            run: make destroy-ci
+          # - name: Terragrunt apply Configuration
+          #   run: make apply-ci
