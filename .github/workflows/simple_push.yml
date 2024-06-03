@@ -11,7 +11,7 @@ jobs:
         environment:
           name: "Dev"
         steps:
-          - name: "Checkout Repo"
+          - name: Checkout Repo
             uses: actions/checkout@v4
         
           - name: Configuration AWS
@@ -28,7 +28,7 @@ jobs:
                 bash infrastructure/scripts/tf_tgswitch_install.sh
                 make tf 
             
-          - name: Terragrunt init
+          - name: Terragrunt initlization
             run: make init
           
           - name: ECR Repo Code
@@ -46,8 +46,8 @@ jobs:
                 AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
                 GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
-          - name: Terragrunt plan
+          - name: Terragrunt plan Configuration
             run: make plan
           
-          - name: Terragrunt apply
+          - name: Terragrunt apply Configuration
             run: make apply-ci
