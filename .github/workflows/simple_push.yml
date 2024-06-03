@@ -26,10 +26,15 @@ jobs:
           - name: Set up Terraform and Terragrunt
             run: |
                 bash infrastructure/scripts/tf_tgswitch_install.sh
-                make tf
+                make tf 
             
           - name: Terragrunt init
             run: make init
+          
+          - name: Image And ECR Repo Code
+            run: |
+                make apply-ci -target=module.ecr_repo
+                bash infrastructure/scripts/image_push_code_dev.sh
         
           - name: Terragrunt plan
             run: make plan
