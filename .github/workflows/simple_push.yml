@@ -13,4 +13,18 @@ jobs:
         steps:
           - name: "Checkout Repo"
             uses: actions/checkout@v4
-  
+        
+          - name: Configuration AWS
+            run: bash infrastructure/scripts/aws_configuration.sh
+            env:
+                AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+                AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          
+          - name: Set up Terraform and Terragrunt
+            run: |
+                bash infrastructure/scripts/tf_tgswitch_install.sh
+                make tf
+            
