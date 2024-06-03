@@ -31,20 +31,20 @@ jobs:
           - name: Terragrunt initlization
             run: make init
           
-          - name: ECR Repo Code
-            working-directory: infrastructure/environments/prod/
-            run: |
-                export TF_VAR_aws_profile=satyam TF_VAR_aws_region=ap-south-1 TF_VAR_tf_bucket=satyam-terragrunts TF_VAR_prefix=project-prod
-                terragrunt apply -auto-approve -target=module.ecr_repo
+          # - name: ECR Repo Code
+          #   working-directory: infrastructure/environments/prod/
+          #   run: |
+          #       export TF_VAR_aws_profile=satyam TF_VAR_aws_region=ap-south-1 TF_VAR_tf_bucket=satyam-terragrunts TF_VAR_prefix=project-prod
+          #       terragrunt apply -auto-approve -target=module.ecr_repo
 
-          - name: Image Push Script
-            run: |
-                bash infrastructure/scripts/image_push_code_prod.sh
-            env:
-                AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-                AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-                AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
-                GITHUB_COMMIT_HASH: '${{ github.sha }}'
+          # - name: Image Push Script
+          #   run: |
+          #       bash infrastructure/scripts/image_push_code_prod.sh
+          #   env:
+          #       AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          #       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          #       AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
+          #       GITHUB_COMMIT_HASH: '${{ github.sha }}'
 
           - name: Terragrunt plan Configuration
             run: make plan
