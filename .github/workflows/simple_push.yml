@@ -1,0 +1,16 @@
+name: "Push event"
+on:
+    push:
+        branches:
+            - task_review
+
+jobs:
+    Push-Request:
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        environment:
+          name: "Dev"
+        steps:
+          - name: "Checkout Repo"
+            uses: actions/checkout@v4
+  
