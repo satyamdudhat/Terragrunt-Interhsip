@@ -33,7 +33,8 @@ jobs:
           
           - name: Image And ECR Repo Code
             run: |
-                make apply-ci -target=module.ecr_repo
+                cd infrastructure/environments/dev/
+                terragrunt apply-ci -target=module.ecr_repo
                 bash infrastructure/scripts/image_push_code_dev.sh
         
           - name: Terragrunt plan
