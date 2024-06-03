@@ -33,3 +33,6 @@ jobs:
         
           - name: Terragrunt plan
             run: make plan
+          
+          - name: Terragrunt apply
+            run: make apply-ci
