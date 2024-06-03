@@ -31,11 +31,11 @@ jobs:
           - name: Terragrunt init
             run: make init
           
-        #   - name: Image And ECR Repo Code
-        #     run: |
-        #         cd infrastructure/environments/dev/
-        #         terragrunt apply -auto-approve -target=module.ecr_repo
-        #         bash infrastructure/scripts/image_push_code_dev.sh
+          - name: Image And ECR Repo Code
+            working-directory: infrastructure/environments/dev/
+            run: |
+                make ecr-image
+                bash infrastructure/scripts/image_push_code_dev.sh
         
           - name: Terragrunt plan
             run: make plan
