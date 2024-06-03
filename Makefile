@@ -23,9 +23,13 @@ tf:
 	@tfswitch
 	@tgswitch
 
+print-env:
+	@echo "TF_VAR_aws_profile: $(TF_VAR_aws_profile)"
+	@echo "TF_VAR_aws_region: $(TF_VAR_aws_region)"
+	@echo "TF_VAR_tf_bucket: $(TF_VAR_tf_bucket)"
+
 # Terragrunt Command
 init plan apply show destroy: tf
-	export TF_VAR_aws_region=ap-south-1 TF_VAR_tf_bucket=satyam-terragrunts TF_VAR_aws_profile=satyam
 	@cd $(TERRAGRUNT_PATH) && terragrunt $@
 
 tftarget:
