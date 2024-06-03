@@ -25,6 +25,7 @@ tf:
 
 # Terragrunt Command
 init plan apply show destroy: tf
+	export TF_VAR_aws_region=ap-south-1
 	@cd $(TERRAGRUNT_PATH) && terragrunt $@
 
 tftarget:
