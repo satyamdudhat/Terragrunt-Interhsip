@@ -6,7 +6,7 @@ on:
     pull_request:
         branches:
           - feat/prod
-          
+
 jobs:
     Pulls-request:
         if: github.event_name == 'pull_request'
