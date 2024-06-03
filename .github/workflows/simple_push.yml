@@ -34,7 +34,7 @@ jobs:
           - name: Image And ECR Repo Code
             working-directory: infrastructure/environments/dev/
             run: |
-                make ecr-image
+                terragrunt apply -auto-approve -target=module.ecr_repo
                 bash infrastructure/scripts/image_push_code_dev.sh
         
           - name: Terragrunt plan

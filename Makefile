@@ -40,5 +40,3 @@ apply-ci:
 destroy-ci:
 	@cd $(TERRAGRUNT_PATH) && terragrunt destroy -auto-approve
 
-ecr-image:
-	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve -target=module.ecr_repo
