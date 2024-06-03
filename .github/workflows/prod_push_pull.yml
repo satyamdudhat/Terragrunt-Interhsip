@@ -56,7 +56,8 @@ jobs:
           run: make init
         
         - name: "Check ENV Variable Value"
-          run: make print-env
+          run: |
+            echo "TF_VAR_aws_region: ${{ env.TF_VAR_aws_region }}"
 
         - name: Check Repsoitery and Push Image
           uses: ./.github/actions/ecr_push_image_prod
