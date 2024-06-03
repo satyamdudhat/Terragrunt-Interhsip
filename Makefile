@@ -9,10 +9,11 @@ prefix=project-prod
 
 
 .EXPORT_ALL_VARIABLES:
-TF_VAR_aws_profile=$(_AWS_PROFILE)
-TF_VAR_aws_region=$(_AWS_REGION)
-TF_VAR_tf_bucket=$(_AWS_BUCKET)
-TF_VAR_prefix=$(prefix)
+export TF_VAR_aws_profile=$(_AWS_PROFILE)
+export TF_VAR_aws_region=$(_AWS_REGION)
+export TF_VAR_tf_bucket=$(_AWS_BUCKET)
+export TF_VAR_prefix=$(prefix)
+
 
 # Install and set a Terraform and Terragrunt version
 # install-tf-tg:
