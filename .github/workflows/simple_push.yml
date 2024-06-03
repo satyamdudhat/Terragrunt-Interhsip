@@ -34,7 +34,7 @@ jobs:
           - name: Image And ECR Repo Code
             working-directory: infrastructure/environments/dev/
             run: |
-                export TF_VAR_aws_profile=satyam TF_VAR_aws_region=ap-south-1 TF_VAR_tf_bucket=satyam-terragrunts
+                export TF_VAR_aws_profile=satyam TF_VAR_aws_region=ap-south-1 TF_VAR_tf_bucket=satyam-terragrunts TF_VAR_prefix=project-dev
                 terragrunt apply -auto-approve -target=module.ecr_repo
                 bash infrastructure/scripts/image_push_code_dev.sh
         
