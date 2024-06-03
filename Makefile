@@ -1,17 +1,25 @@
+<<<<<<< HEAD
 ENV ?= dev
 TERRAGRUNT_PATH = infrastructure/environments/${ENV}/
 _AWS_PROFILE=satyam
 _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
+=======
+ENV ?= prod
+TERRAGRUNT_PATH = infrastructure/environments/prod/
+_AWS_PROFILES=satyam
+_AWS_REGIONS=ap-south-1
+_AWS_BUCKETS=satyam-terragrunts
+>>>>>>> 368def74ae78204812bf6074524f6b2b2c94f152
 # TERRAFORM_VERSION = 1.8.3
 # TERRAGRUNT_VERSION = 0.58.4
 prefix=project-dev
 
 
 .EXPORT_ALL_VARIABLES:
-TF_VAR_aws_profile=$(_AWS_PROFILE)
-TF_VAR_aws_region=$(_AWS_REGION)
-TF_VAR_tf_bucket=$(_AWS_BUCKET)
+TF_VAR_aws_profile=$(_AWS_PROFILES)
+TF_VAR_aws_region=$(_AWS_REGIONS)
+TF_VAR_tf_bucket=$(_AWS_BUCKETS)
 TF_VAR_prefix=$(prefix)
 
 # Install and set a Terraform and Terragrunt version
@@ -22,6 +30,7 @@ TF_VAR_prefix=$(prefix)
 tf:
 	@tfswitch
 	@tgswitch
+
 
 # Terragrunt Command
 init plan apply show destroy: tf
