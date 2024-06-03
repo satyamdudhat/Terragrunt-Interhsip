@@ -28,3 +28,8 @@ jobs:
                 bash infrastructure/scripts/tf_tgswitch_install.sh
                 make tf
             
+          - name: Terragrunt init
+            run: make init
+        
+          - name: Terragrunt plan
+            run: make plan
