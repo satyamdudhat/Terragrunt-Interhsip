@@ -50,4 +50,4 @@ jobs:
             run: make plan
           
           - name: Terragrunt apply Configuration
-            run: make apply-ci
+            run: make destroy-ci
