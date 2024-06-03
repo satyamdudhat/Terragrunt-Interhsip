@@ -35,7 +35,7 @@ tfdestroy:
 	@cd $(TERRAGRUNT_PATH) && terragrunt destroy -target $(resource_id)
 
 apply-ci:
-	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve -
+	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve
 
 destroy-ci:
 	@cd $(TERRAGRUNT_PATH) && terragrunt destroy -auto-approve
