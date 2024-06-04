@@ -5,7 +5,3 @@ variable "ecr_name" {
 variable "image_tag_mutability" {
   type = string
 }
-
-variable "imagepush_script_path" {
-  type = string
-}
