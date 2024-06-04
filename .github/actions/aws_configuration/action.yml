@@ -30,9 +30,3 @@ runs:
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}
       shell: bash
-
-    - name: Set up Terraform and Terragrunt
-      run: |
-        bash infrastructure/scripts/tf_tgswitch_install
-        make tf
-      shell: bash
