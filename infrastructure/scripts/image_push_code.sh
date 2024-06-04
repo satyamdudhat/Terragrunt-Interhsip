@@ -7,5 +7,5 @@ docker build -t "function-image" .
 docker tag "function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/"project-dev-ecr":latest
 docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/"project-dev-ecr":latest
 
-docker tag "function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/"project-dev-ecr:"${GITHUB_COMMIT_HASH}"
+docker tag "function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/project-dev-ecr:"${GITHUB_COMMIT_HASH}"
 docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/"project-dev-ecr:"${GITHUB_COMMIT_HASH}"
