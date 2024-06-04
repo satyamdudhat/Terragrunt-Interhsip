@@ -13,9 +13,6 @@ extra_arguments "custom_vars" {
       "push",
       "refresh"
     ]
-
-    // required_var_files = ["terraform.tfvars"]
-
 }
 
 }
