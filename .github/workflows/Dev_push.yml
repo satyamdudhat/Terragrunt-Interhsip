@@ -15,7 +15,7 @@ jobs:
             uses: actions/checkout@v4
         
           - name: Configuration AWS
-            uses: ./github/actions/aws_terragrunt_configuration
+            uses: ./.github/actions/aws_terragrunt_configuration
             with:
                 AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
                 AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
@@ -27,7 +27,7 @@ jobs:
             run: make init
           
           - name: Image Push Script
-            uses: ./github/actions/ecr_push_image_dev
+            uses: ./.github/actions/ecr_push_image_dev
             with:
                 AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
