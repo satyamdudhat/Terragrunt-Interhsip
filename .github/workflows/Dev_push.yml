@@ -4,6 +4,9 @@ on:
     branches:
       - task_review
 
+env:
+  ecr_image_tag: "project-dev"
+
 jobs:
     Push-Request:
         runs-on: ubuntu-latest
@@ -26,12 +29,14 @@ jobs:
             run: make init
           
           - name: Image Push Script
-            uses: ./.github/actions/ecr_push_image_dev
+            uses: ./.github/actions/ecr_push_image
             with:
                 AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
                 AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
                 GITHUB_COMMIT_HASH: '${{ github.sha }}'
+                IMAGE_TAG: ${{env.ecr_image_tag}}
+                
 
           - name: Terragrunt plan Configuration
             run: make plan
