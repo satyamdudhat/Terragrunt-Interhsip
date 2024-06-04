@@ -4,7 +4,6 @@ on:
     branches:
       - task_review
 
-
 jobs:
     Push-Request:
         runs-on: ubuntu-latest
@@ -14,14 +13,17 @@ jobs:
           - name: Checkout Repo
             uses: actions/checkout@v4
         
-          - name: Configuration AWS
-            uses: ./.github/actions/aws_terragrunt_configuration
+          - name: Aws Credentials Configuration
+            uses: ./.github/actions/aws_configuration
             with:
                 AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
                 AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          
+          - name: Terragrunt && Terraform Installation
+            uses: ./.github/actions/terragrunt_terraform_install
 
           - name: Terragrunt initlization
             run: make init
