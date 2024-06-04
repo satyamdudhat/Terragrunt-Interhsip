@@ -33,7 +33,7 @@ module "ecr_repo" {
   source = "../modules/ECR"
   ecr_name = "${var.prefix}-ecr"
   image_tag_mutability = "MUTABLE"
-  imagepush_script_path = "bash ../scripts/image_push_code_master.sh"
+  imagepush_script_path = "bash ../scripts/image_push_code_dev.sh"
   providers = {
     aws = aws
   }
