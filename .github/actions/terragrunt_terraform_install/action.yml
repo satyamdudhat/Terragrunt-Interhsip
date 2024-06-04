@@ -3,7 +3,7 @@ description: "Install Terraform, Terragrunt"
 runs:
   using: 'composite'
   steps:
-   - name: Install tf and tg switch
+    - name: Install tf and tg switch
       run: |
           rm -rf /usr/local/bin/terraform
           curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sudo bash
