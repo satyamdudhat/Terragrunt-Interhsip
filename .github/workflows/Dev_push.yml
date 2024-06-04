@@ -6,7 +6,6 @@ on:
 
 jobs:
     Push-Request:
-        if: github.event_name == 'push'
         runs-on: ubuntu-latest
         environment:
           name: "Dev"
