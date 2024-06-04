@@ -21,7 +21,7 @@ runs:
   using: 'composite'
   steps:
     - name: Push Image in ECR
-      run: bash infrastructure/scripts/image_push_code.sh
+      run: make image_push
       env:
           AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
           AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}

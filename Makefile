@@ -4,6 +4,7 @@ _AWS_PROFILES=satyam
 _AWS_REGIONS=ap-south-1
 _AWS_BUCKETS=satyam-terragrunts
 prefix=project-dev
+SCRIPTS=infrastructure/scripts
 
 .EXPORT_ALL_VARIABLES:
 TF_VAR_aws_profile=$(_AWS_PROFILES)
@@ -29,3 +30,6 @@ apply-ci:
 
 ecr-repo:
 		@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve 
+
+image_push:
+	 @${SCRIPTS}/image_push_code $(prefix)
