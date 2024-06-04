@@ -22,7 +22,7 @@ runs:
   using: 'composite'
   steps:
     - name: Configuration AWS
-      run: bash infrastructure/scripts/aws_configuration.sh
+      run: bash infrastructure/scripts/aws_configuration
       env:
         AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
         AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
@@ -33,6 +33,6 @@ runs:
 
     - name: Set up Terraform and Terragrunt
       run: |
-        bash infrastructure/scripts/tf_tgswitch_install.sh
+        bash infrastructure/scripts/tf_tgswitch_install
         make tf
       shell: bash
