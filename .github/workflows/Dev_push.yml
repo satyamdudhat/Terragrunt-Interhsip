@@ -4,8 +4,6 @@ on:
     branches:
       - task_review
 
-env:
-  ecr_image_tag: "project-dev"
 
 jobs:
     Push-Request:

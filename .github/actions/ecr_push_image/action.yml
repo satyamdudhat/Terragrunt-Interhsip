@@ -13,9 +13,6 @@ inputs:
   GITHUB_COMMIT_HASH:
     description: 'A Github GITHUB_COMMIT_HASH'
     required: true
-  IMAGE_TAG:
-    description: 'A Github GITHUB_COMMIT_HASH'
-    required: true
 
 runs:
   using: 'composite'
@@ -27,6 +24,5 @@ runs:
           AWS_DEFAULT_REGION: ${{ inputs.AWS_DEFAULT_REGION }}
           AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
           GITHUB_COMMIT_HASH: ${{ inputs.GITHUB_COMMIT_HASH}}
-          IMAGE_TAG: ${{inputs.IMAGE_TAG}}
       shell: bash
 
