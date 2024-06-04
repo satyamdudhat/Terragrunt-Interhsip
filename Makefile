@@ -32,4 +32,4 @@ ecr-repo:
 		@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve 
 
 image_push:
-	 @chmod +x $(SCRIPTS)/image_push_code.sh $(prefix)
+	 @$(SCRIPTS)/image_push_code.sh
