@@ -17,12 +17,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Check ECR Repository
-      run: bash infrastructure/scripts/ecr_rpo_check_dev.sh
-      env:
-        AWS_PROFILE: ${{ inputs.AWS_PROFILE }}
-      shell: bash
-            
     - name: Push Image in ECR
       run: bash infrastructure/scripts/image_push_code_dev.sh
       env:
