@@ -1,5 +1,4 @@
 #!/bin/bash
-prefix=$0 
 
 
 echo "AWS Access Key ID: $AWS_ACCOUNT_ID"
