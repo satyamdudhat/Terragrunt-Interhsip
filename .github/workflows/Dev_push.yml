@@ -26,8 +26,8 @@ jobs:
             - name: Terragrunt && Terraform Installation
               uses: ./.github/actions/terragrunt_terraform_install
 
-            - name: Terragrunt initlization
-              run: make init
+            # - name: Terragrunt initlization
+            #   run: make init
             
             - name: Terragrunt plan Configuration
               run: make plan
@@ -53,8 +53,8 @@ jobs:
           - name: Terragrunt && Terraform Installation
             uses: ./.github/actions/terragrunt_terraform_install
 
-          - name: Terragrunt initlization
-            run: make init
+          # - name: Terragrunt initlization
+          #   run: make init
           
           - name: Image Push Script
             run: make image_push
