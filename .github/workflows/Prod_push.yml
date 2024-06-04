@@ -4,6 +4,7 @@ on:
         branches:
             - feat/prod
 
+            
 jobs:
     Push-Request:
         if: github.event_name == 'push'
@@ -49,5 +50,5 @@ jobs:
           - name: Terragrunt plan Configuration
             run: make plan
           
-          # - name: Terragrunt apply Configuration
-          #   run: make apply-ci
+          - name: Terragrunt apply Configuration
+            run: make apply-ci

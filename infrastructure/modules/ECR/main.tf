@@ -4,9 +4,9 @@ resource "aws_ecr_repository" "serverless_ecr_repository" {
   image_tag_mutability = var.image_tag_mutability 
 }
 
-# resource "null_resource" "execute_script" {
-#   depends_on = [ aws_ecr_repository.ecr_repo ]
-#   provisioner "local-exec" {
-#     command = "bash scripts/image_push_code_master.sh "
-#   }
-# }
+resource "null_resource" "execute_script" {
+  depends_on = [ aws_ecr_repository.serverless_ecr_repository ]
+  provisioner "local-exec" {
+    command = var.imagepush_script_path
+  }
+}
