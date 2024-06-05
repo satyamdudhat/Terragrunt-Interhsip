@@ -27,8 +27,8 @@ tfdestroy:
 
 apply-ci:
 	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve
-	
+
 image_push:
 	 @chmod 777 ./$(SCRIPTS)/image_push_code
-	 @./$(SCRIPTS)/image_push_code $(prefix)
+	 @aws_region=$(_AWS_REGIONS) aws_profile=$(_AWS_PROFILES) ./$(SCRIPTS)/image_push_code $(prefix)
 
