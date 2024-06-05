@@ -30,5 +30,5 @@ apply-ci:
 
 image_push:
 	 @chmod 777 ./$(SCRIPTS)/image_push_code
-	 @AWS_REGIONSs=$(_AWS_REGIONS) AWS_PROFILESs=$(_AWS_PROFILES) ./$(SCRIPTS)/image_push_code $(prefix)
+	 @$(_AWS_REGIONS) $(_AWS_PROFILES) ./$(SCRIPTS)/image_push_code $(prefix)
 
