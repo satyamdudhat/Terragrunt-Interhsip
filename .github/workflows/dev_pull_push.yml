@@ -1,0 +1,65 @@
+name: "Push Event And Pull Event"
+on:
+  push:
+    branches:
+      - task_review
+  pull_request:
+    branches:
+      - task_review
+
+env:
+  assign_environment: "Dev"
+
+jobs:    
+    pull-job:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        environment:
+          name: ${assign_environment}
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v4
+
+            - name: Aws Credentials Configuration
+              uses:  ./.github/actions/aws_configuration 
+              with:
+                AWS_ACCOUNT_ID: '${{secrets.AWS_ACCOUNT_ID}}'
+                AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+                AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+
+            - name: Terragrunt && Terraform Installation
+              uses: ./.github/actions/terragrunt_terraform_install
+              
+            - name: Terragrunt plan Configuration
+              run: make plan
+
+    push-job:
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        environment:
+          name: ${assign_environment}
+        steps:
+          - name: Checkout Repo
+            uses: actions/checkout@v4
+        
+          - name: Aws Credentials Configuration
+            uses: ./.github/actions/aws_configuration
+            with:
+                AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
+          - name: Terragrunt && Terraform Installation
+            uses: ./.github/actions/terragrunt_terraform_install
+
+          - name: Image Push Script
+            run: make image_push
+            env:
+                AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+                GITHUB_COMMIT_HASH: '${{ github.sha }}'
+                
+          - name: Terragrunt plan Configuration
+            run: make plan
+          
+          - name: Terragrunt apply Configuration
+            run: make apply-ci
