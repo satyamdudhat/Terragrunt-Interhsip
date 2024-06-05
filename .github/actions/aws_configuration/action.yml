@@ -16,7 +16,7 @@ runs:
   using: 'composite'
   steps:
     - name: Configuration AWS
-      run: aws_config
+      run: make aws_config
       env:
         AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
