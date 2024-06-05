@@ -13,3 +13,4 @@ runs:
           else
               echo "Not Valid Branch"
           fi
+      shell: bash
