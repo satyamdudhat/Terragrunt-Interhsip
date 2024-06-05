@@ -1,4 +1,5 @@
 variable "api_name" {
+  type = string
   description = "Name for the API Gateway"
 }
 

@@ -45,4 +45,8 @@ assign_env:
 	@./$(SCRIPTS)/assign_environment
 
 fmt:
-	@terraform fmt -check -recursive
+	@terraform fmt -check -recursive infrastructure/modules/Api_Gateway/
+	@terraform fmt -check -recursive infrastructure/modules/Dynamo_DB/
+	@terraform fmt -check -recursive infrastructure/modules/ECR/
+	@terraform fmt -check -recursive infrastructure/modules/Lambda_Function/
+	@terraform fmt -check -recursive infrastructure/stack/
