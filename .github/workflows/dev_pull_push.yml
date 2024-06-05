@@ -60,7 +60,7 @@ jobs:
         run: make plan
 
       - name: Terraform format
-        run: terraform fmt --recursive infrastructure/
+        run: make fmt
 
       - name: Terragrunt apply Configuration
         run: make apply-ci
