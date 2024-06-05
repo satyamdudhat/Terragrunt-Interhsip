@@ -59,8 +59,5 @@ jobs:
       - name: Terragrunt plan Configuration
         run: make plan
 
-      - name: Terraform format
-        run: make fmt
-
       - name: Terragrunt apply Configuration
         run: make apply-ci

@@ -14,7 +14,6 @@ TF_VAR_prefix=$(prefix)
 AWS_REGIONS1=$(_AWS_REGIONS)
 AWS_PROFILES1=$(_AWS_PROFILES)
 
-.PHONY: fmt
 
 tf:
 	@tfswitch
@@ -44,5 +43,3 @@ assign_env:
 	@chmod 775 ./$(SCRIPTS)/assign_environment
 	@./$(SCRIPTS)/assign_environment
 
-fmt:
-	@terraform fmt -recursive infrastructure/
