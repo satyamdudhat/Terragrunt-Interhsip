@@ -20,6 +20,8 @@ jobs:
         - name: Assign Environment
           id: set_env
           run: make assign_env
+          env:
+            GIT_REF: ${{ github.ref }}
       
     pull-job:
         needs: assign-env
