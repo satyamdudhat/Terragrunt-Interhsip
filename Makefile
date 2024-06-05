@@ -41,3 +41,6 @@ aws_config:
 assign_env:
 	@chmod 775 ./$(SCRIPTS)/assign_environment
 	@./$(SCRIPTS)/assign_environment
+
+fmt:
+	@terraform fmt -check -recursive
