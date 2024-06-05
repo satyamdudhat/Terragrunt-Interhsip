@@ -45,4 +45,4 @@ assign_env:
 	@./$(SCRIPTS)/assign_environment
 
 fmt:
-	@cd $(TERRAGRUNT_PATH) && terraform fmt -recursive infrastructure/
+	@terraform fmt -recursive infrastructure/

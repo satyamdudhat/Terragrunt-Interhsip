@@ -1,16 +1,16 @@
 variable "api_name" {
-  type = string
+  type        = string
   description = "Name for the API Gateway"
 }
 
 variable "lambda_function_uri" {
   description = "Lambda function invoke_arn"
-  type = string
+  type        = string
 }
 
 variable "lambda_function_name" {
   description = "Lambda fucntion Name ARN"
-  type = string
+  type        = string
 }
 
 variable "api_path_name" {
@@ -26,7 +26,7 @@ variable "status_http_methods" {
 #Employee Methods
 variable "employee_http_methods" {
   type    = list(string)
-  default = ["GET","POST","DELETE","PATCH","PUT"]
+  default = ["GET", "POST", "DELETE", "PATCH", "PUT"]
 }
 
 #Employees Methods
