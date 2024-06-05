@@ -16,7 +16,7 @@ runs:
   using: 'composite'
   steps:
     - name: Configuration AWS
-      run: bash infrastructure/scripts/aws_configuration
+      run: aws_config
       env:
         AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}

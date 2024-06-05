@@ -34,3 +34,6 @@ image_push:
 	@chmod 777 ./$(SCRIPTS)/image_push_code
 	@./$(SCRIPTS)/image_push_code
 
+aws_config
+	@chmod 777 ./$(SCRIPTS)/aws_configuration
+	@./$(SCRIPTS)/aws_configuration
