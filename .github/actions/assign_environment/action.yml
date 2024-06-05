@@ -10,7 +10,5 @@ runs:
               echo "my_var=Dev" >> $GITHUB_OUTPUT
           elif [[ ${{ github.ref }} == 'refs/heads/feat/prod' ]]; then
               echo "my_var=Prod" >> $GITHUB_OUTPUT
-          else
-              echo "Not Valid Branch"
           fi
       shell: bash
