@@ -14,6 +14,8 @@ TF_VAR_prefix=$(prefix)
 AWS_REGIONS1=$(_AWS_REGIONS)
 AWS_PROFILES1=$(_AWS_PROFILES)
 
+.PHONY:
+
 tf:
 	@tfswitch
 	@tgswitch
