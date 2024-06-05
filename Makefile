@@ -43,4 +43,4 @@ assign_env:
 	@./$(SCRIPTS)/assign_environment
 
 fmt:
-	@terraform fmt -check -recursive
+	@terraform fmt -check-recursive
