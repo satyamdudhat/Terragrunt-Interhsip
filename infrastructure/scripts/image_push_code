@@ -1,6 +1,11 @@
 #!/bin/bash
 
 
+echo "AWS Account ID: $AWS_ACCOUNT_ID"
+echo "AWS Region: $aws_region"
+echo "AWS Profile: $aws_profile"
+echo "GitHub Commit Hash: $GITHUB_COMMIT_HASH"
+
 echo "AWS Access Key ID: $AWS_ACCOUNT_ID"
 aws ecr get-login-password --region "${aws_region}" --profile "${aws_profile}" | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}".dkr.ecr."${aws_region}".amazonaws.com
 docker build -t "lambda-function-image" .
