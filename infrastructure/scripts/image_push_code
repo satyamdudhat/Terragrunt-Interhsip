@@ -2,10 +2,10 @@
 
 
 echo "AWS Access Key ID: $AWS_ACCOUNT_ID"
-aws ecr get-login-password --region "${AWS_DEFAULT_REGION}" --profile "${AWS_PROFILE}" | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com
+aws ecr get-login-password --region "${aws_region}" --profile "${aws_profile}" | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}".dkr.ecr."${aws_region}".amazonaws.com
 docker build -t "lambda-function-image" .
-docker tag "lambda-function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/$1-ecr:latest
-docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/$1-ecr:latest
+docker tag "lambda-function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${aws_region}".amazonaws.com/$1-ecr:latest
+docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${aws_region}".amazonaws.com/$1-ecr:latest
 
-docker tag "lambda-function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/$1-ecr:"${GITHUB_COMMIT_HASH}"
-docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${AWS_DEFAULT_REGION}".amazonaws.com/$1-ecr:"${GITHUB_COMMIT_HASH}"
+docker tag "lambda-function-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${aws_region}".amazonaws.com/$1-ecr:"${GITHUB_COMMIT_HASH}"
+docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${aws_region}".amazonaws.com/$1-ecr:"${GITHUB_COMMIT_HASH}"
