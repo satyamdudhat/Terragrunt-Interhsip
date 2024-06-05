@@ -14,16 +14,8 @@ jobs:
       outputs:
         current_env: ${{ steps.set_env.outputs.my_var }}
       steps:
-        - name: Set output
-          id: set_env
-          run: |
-            if [[ ${{ github.ref }} == 'refs/heads/task_review' ]]; then
-                echo "my_var=Dev" >> $GITHUB_OUTPUT
-            elif [[ ${{ github.ref }} == 'refs/heads/feat/prod' ]]; then
-                echo "my_var=Prod" >> $GITHUB_OUTPUT
-            else
-                echo "Not Valid Branch"
-            fi
+        - name: Assign Environment
+          uses: ./.github/actions/assign_environmnet
       
     pull-job:
         needs: assign-env
@@ -32,7 +24,7 @@ jobs:
         environment:
           name: ${{ needs.assign-env.outputs.current_env }}
         steps:
-            - name: "Checkout Repo"
+            - name: Checkout Repo
               uses: actions/checkout@v4
 
             - name: Aws Credentials Configuration
