@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - task_review
+  pull_request:
+    branches:
+      - task_review
+
 
 jobs:
     Pulls-request:
