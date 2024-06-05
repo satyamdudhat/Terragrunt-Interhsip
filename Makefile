@@ -31,9 +31,13 @@ apply-ci:
 	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve
 
 image_push:
-	@chmod 777 ./$(SCRIPTS)/image_push_code
+	@chmod 775 ./$(SCRIPTS)/image_push_code
 	@./$(SCRIPTS)/image_push_code
 
 aws_config:
-	@chmod 777 ./$(SCRIPTS)/aws_configuration
+	@chmod 775 ./$(SCRIPTS)/aws_configuration
 	@./$(SCRIPTS)/aws_configuration
+
+assign_env:
+	@chmod 775 ./$(SCRIPTS)/assign_environment
+	@./$(SCRIPTS)/assign_environment

@@ -16,9 +16,10 @@ jobs:
       steps:
         - name: Checkout Repo
           uses: actions/checkout@v4
-          
+
         - name: Assign Environment
-          uses: ./.github/actions/assign_environment
+          id: set_env
+          run: make assign_env
       
     pull-job:
         needs: assign-env
