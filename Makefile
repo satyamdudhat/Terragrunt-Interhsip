@@ -14,7 +14,7 @@ TF_VAR_prefix=$(prefix)
 AWS_REGIONS1=$(_AWS_REGIONS)
 AWS_PROFILES1=$(_AWS_PROFILES)
 
-.PHONY:
+.PHONY: fmt
 
 tf:
 	@tfswitch
@@ -45,8 +45,4 @@ assign_env:
 	@./$(SCRIPTS)/assign_environment
 
 fmt:
-	@terraform fmt -check -recursive infrastructure/modules/Api_Gateway/
-	@terraform fmt -check -recursive infrastructure/modules/Dynamo_DB/
-	@terraform fmt -check -recursive infrastructure/modules/ECR/
-	@terraform fmt -check -recursive infrastructure/modules/Lambda_Function/
-	@terraform fmt -check -recursive infrastructure/stack/
+	@terraform fmt -check -recursive infrastructure/
