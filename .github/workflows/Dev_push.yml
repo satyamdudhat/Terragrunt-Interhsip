@@ -50,14 +50,14 @@ jobs:
           - name: Terragrunt && Terraform Installation
             uses: ./.github/actions/terragrunt_terraform_install
 
-          - name: Image Push Script
-            run: make image_push
-            env:
-                AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-                GITHUB_COMMIT_HASH: '${{ github.sha }}'
+          # - name: Image Push Script
+          #   run: make image_push
+          #   env:
+          #       AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          #       GITHUB_COMMIT_HASH: '${{ github.sha }}'
                 
-          - name: Terragrunt plan Configuration
-            run: make plan
+          # - name: Terragrunt plan Configuration
+          #   run: make plan
           
-          - name: Terragrunt apply Configuration
-            run: make apply-ci
+          # - name: Terragrunt apply Configuration
+          #   run: make apply-ci

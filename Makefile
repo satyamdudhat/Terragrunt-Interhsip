@@ -11,8 +11,8 @@ TF_VAR_aws_profile=$(_AWS_PROFILES)
 TF_VAR_aws_region=$(_AWS_REGIONS)
 TF_VAR_tf_bucket=$(_AWS_BUCKETS)
 TF_VAR_prefix=$(prefix)
-AWS_REGIONS=$(_AWS_REGIONS)
-AWS_PROFILES=$(_AWS_PROFILES)
+AWS_REGIONS1=$(_AWS_REGIONS)
+AWS_PROFILES1=$(_AWS_PROFILES)
 
 tf:
 	@tfswitch
