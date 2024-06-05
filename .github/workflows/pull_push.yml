@@ -15,7 +15,7 @@ jobs:
         current_env: ${{ steps.set_env.outputs.my_var }}
       steps:
         - name: Assign Environment
-          uses: ./.github/actions/assign_environmnet
+          uses: ./.github/actions/assign_environment
       
     pull-job:
         needs: assign-env
