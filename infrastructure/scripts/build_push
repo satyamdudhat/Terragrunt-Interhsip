@@ -1,10 +1,9 @@
 #!/bin/bash
 
-echo "AWS Access Key ID: $AWS_ACCOUNT_ID"
 aws ecr get-login-password --region "${_AWS_REGION}" --profile "${_AWS_PROFILE}" | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com
-docker build -t "${_Project_Name}-image" .
-docker tag "${_Project_Name}-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com/"${PREFIX}"-ecr:latest
+docker build -t "${PREFIX}" .
+docker tag "${PREFIX}" "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com/"${PREFIX}"-ecr:latest
 docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com/"${PREFIX}"-ecr:latest
 
-docker tag "${_Project_Name}-image" "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com/"${PREFIX}"-ecr:"${GITHUB_COMMIT_HASH}"
+docker tag "${PREFIX}" "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com/"${PREFIX}"-ecr:"${GITHUB_COMMIT_HASH}"
 docker push "${AWS_ACCOUNT_ID}".dkr.ecr."${_AWS_REGION}".amazonaws.com/"${PREFIX}"-ecr:"${GITHUB_COMMIT_HASH}"

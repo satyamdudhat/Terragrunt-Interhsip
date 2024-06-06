@@ -5,7 +5,6 @@ _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
 PREFIX=project-dev
 SCRIPTS=infrastructure/scripts
-_Project_Name=serverless-webapp
 
 .EXPORT_ALL_VARIABLES:
 TF_VAR_aws_profile=$(_AWS_PROFILE)
@@ -30,12 +29,12 @@ tfdestroy:
 apply-ci:
 	@cd $(TERRAGRUNT_PATH) && terragrunt apply -auto-approve
 
-image_push:
-	@./$(SCRIPTS)/image_push_code
+build-push:
+	@./$(SCRIPTS)/build_push
 
 aws_config:
 	@./$(SCRIPTS)/aws_configuration
 
 image-build:
-	@docker build -t "$(_Project_Name)-image" .
+	@docker build -t "$(PREFIX)" .
 

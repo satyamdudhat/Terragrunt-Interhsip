@@ -54,7 +54,7 @@ jobs:
         uses: ./.github/actions/terragrunt_terraform_install
 
       - name: Image Push Script
-        run: make image_push
+        run: make build-push
         env:
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
           GITHUB_COMMIT_HASH: ${{ github.sha }}
