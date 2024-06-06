@@ -2,9 +2,6 @@ name: "Configuration"
 description: "Configuration of AWS and install Terraform, Terragrunt"
 
 inputs:
-  AWS_ACCOUNT_ID:
-    description: 'AWS Account ID'
-    required: true
   AWS_ACCESS_KEY_ID:
     description: 'AWS Access Key ID'
     required: true
@@ -18,7 +15,6 @@ runs:
     - name: Configuration AWS
       run: make aws_config
       env:
-        AWS_ACCOUNT_ID: ${{ inputs.AWS_ACCOUNT_ID }}
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
       shell: bash
