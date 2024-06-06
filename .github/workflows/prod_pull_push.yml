@@ -30,6 +30,9 @@ jobs:
 
       - name: Terragrunt plan Configuration
         run: make plan
+      
+      - name: Image Build
+        run: image-build
 
   push-job:
     if: ${{ github.event_name == 'push' }}
