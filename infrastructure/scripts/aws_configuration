@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "AWS Region: $_AWS_REGION"
-echo "AWS Profile: $_AWS_PROFILE"
-
 aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID}" --profile "${_AWS_PROFILE}"
 aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY}" --profile "${_AWS_PROFILE}"
 aws configure set region "${_AWS_REGION}" --profile "${_AWS_PROFILE}"

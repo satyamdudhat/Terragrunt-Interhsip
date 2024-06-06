@@ -5,6 +5,7 @@ _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
 PREFIX=project-dev
 SCRIPTS=infrastructure/scripts
+_Project_Name=serverless-webapp
 
 .EXPORT_ALL_VARIABLES:
 TF_VAR_aws_profile=$(_AWS_PROFILE)
@@ -36,5 +37,5 @@ aws_config:
 	@./$(SCRIPTS)/aws_configuration
 
 image-build:
-	@docker build -t "lambda-function-image" .
+	@docker build -t "$(_Project_Name)-image" .
 
