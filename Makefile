@@ -5,6 +5,7 @@ _AWS_REGION=ap-south-1
 _AWS_BUCKET=satyam-terragrunts
 PREFIX=project-dev
 SCRIPTS=infrastructure/scripts
+GITHUB_COMMIT_HASH=$(shell git rev-parse HEAD)
 
 .EXPORT_ALL_VARIABLES:
 TF_VAR_aws_profile=$(_AWS_PROFILE)
