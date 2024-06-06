@@ -1,23 +1,23 @@
 resource "aws_lambda_function" "serverless_lambda_function" {
-  function_name    = "${var.prefix}-lambdaproject"
+  function_name = "${var.prefix}-lambdaproject"
   architectures = ["x86_64"]
-  package_type     = "Image"
-  image_uri        = var.lambda_image_uri
-  role             = aws_iam_role.serverless_lambda_execution_role.arn
+  package_type  = "Image"
+  image_uri     = var.lambda_image_uri
+  role          = aws_iam_role.serverless_lambda_execution_role.arn
 }
 
 
 # Lmabda Role
 resource "aws_iam_role" "serverless_lambda_execution_role" {
-  name               = "${var.prefix}-iamrole"
+  name = "${var.prefix}-iamrole"
   assume_role_policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [{
-      Effect    = "Allow",
+      Effect = "Allow",
       Principal = {
         Service = "lambda.amazonaws.com"
       },
-      Action    = "sts:AssumeRole"
+      Action = "sts:AssumeRole"
     }]
   })
 }
@@ -26,11 +26,11 @@ resource "aws_iam_role" "serverless_lambda_execution_role" {
 resource "aws_iam_policy" "serverless_lambda_ecr_access_policy" {
   name        = "${var.prefix}-ecraccess"
   description = "Policy for granting Lambda access to ECR repositories"
-  policy      = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
-      Effect   = "Allow",
-      Action   = [
+      Effect = "Allow",
+      Action = [
         "ecr:GetAuthorizationToken",
         "ecr:BatchCheckLayerAvailability",
         "ecr:GetDownloadUrlForLayer",
@@ -49,18 +49,18 @@ resource "aws_iam_policy" "serverless_lambda_ecr_access_policy" {
 resource "aws_iam_policy" "serverless_dynamodb_access_policy" {
   name        = "${var.prefix}-dyanmodbaccess"
   description = "Policy for granting Lambda access to DyanmoDb Table"
-  policy      = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:*"
-            ],
-            "Resource": "*"
-        }
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "dynamodb:*"
+        ],
+        "Resource" : "*"
+      }
     ]
-})
+  })
 }
 
 
