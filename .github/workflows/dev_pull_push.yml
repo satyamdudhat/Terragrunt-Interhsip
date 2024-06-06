@@ -32,8 +32,8 @@ jobs:
         run: make plan
 
       - name: Image Build
-        run: image-build
-        
+        run: make image-build
+
   push-job:
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
